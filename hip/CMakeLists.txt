@@ -1,0 +1,35 @@
+#
+cmake_minimum_required(VERSION 3.21)
+enable_language(HIP C)
+#message(STATUS "HIP Compiler is: " ${CMAKE_HIP_COMPILER})
+set(CMAKE_HIP_COMPILER "hipcc")
+set(HIP_SRC_DIR         ${Rodinia_SRC_DIR}/hip)
+#set(CMAKE_CXX_COMPILER  ${MPI_CXX_COMPILER})
+set(CMAKE_CXX_COMPILER  "hipcc")
+
+include_directories($ENV{HIP_PATH}/include)
+
+add_subdirectory(backprop)
+add_subdirectory(bfs)
+add_subdirectory(b+tree)
+add_subdirectory(cfd)
+add_subdirectory(dwt2d)
+add_subdirectory(gaussian)
+add_subdirectory(heartwall)
+add_subdirectory(hotspot)
+add_subdirectory(hotspot3D)
+add_subdirectory(huffman)
+#add_subdirectory(hybridsort) #GL error
+add_subdirectory(kmeans)
+add_subdirectory(lavaMD)
+#add_subdirectory(leukocyte)  #lots of
+add_subdirectory(lud)
+add_subdirectory(mummergpu)
+add_subdirectory(myocyte)
+add_subdirectory(nn)
+add_subdirectory(nw)
+add_subdirectory(particlefilter)
+add_subdirectory(pathfinder)
+add_subdirectory(srad)
+add_subdirectory(streamcluster)
+

@@ -1,0 +1,2 @@
+Copied from /usr/local/cuda-10.2/samples/common/inc,
+and convert to hip by hipconvertinplace-perl.sh.
