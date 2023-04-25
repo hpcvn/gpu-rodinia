@@ -1,15 +1,19 @@
 include ../../common/make.config
 
-CC := $(CUDA_DIR)/bin/nvcc ${NVCC_FLAGS}
+CC := $(CUDA_DIR)/bin/nvcc
 
 INCLUDE := $(CUDA_DIR)/include
 
 SRC = bfs.cu
+OBJ = bfs.o
 
-EXE = bfs.out
+EXE = bfs
 
-release: $(SRC)
-	$(CC) $(SRC) -o $(EXE) -I$(INCLUDE) -I../util -L$(CUDA_LIB_DIR) -DTIMING
+bfs: $(OBJ)
+	$(CC) ${NVCC_FLAGS} $(OBJ) -o $(EXE) -L$(CUDA_LIB_DIR)
+
+$(OBJ): $(SRC)
+	$(CC) ${NVCC_FLAGS} $(SRC) -o $(OBJ) -I$(INCLUDE) -I../util -DTIMING -c
 
 clang: $(SRC)
 	clang++ $(SRC) -o $(EXE) -I../util --cuda-gpu-arch=sm_20 \
@@ -25,4 +29,4 @@ debugenum: $(SRC)
 	$(CC) -g -deviceemu $(SRC) -o $(EXE) -I$(INCLUDE) -L$(CUDA_LIB_DIR) 
 
 clean: $(SRC)
-	rm -f $(EXE) $(EXE).linkinfo result.txt
+	rm -f $(EXE) $(OBJ) $(EXE).linkinfo result.txt

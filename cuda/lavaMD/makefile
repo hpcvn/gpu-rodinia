@@ -21,7 +21,7 @@ CUD_C = $(CUDA_DIR)/bin/nvcc
 CUDA_FLAG = ${NVCC_FLAGS}
 
 # link objects (binaries) together
-a.out:		main.o \
+lavaMD:		main.o \
 			./kernel/kernel_gpu_cuda_wrapper.o \
 			./util/num/num.o \
 			./util/timer/timer.o \
@@ -84,7 +84,7 @@ main.o:		main.h \
 
 # delete all object and executable files
 clean:
-	rm	*.o \
+	rm -f   *.o \
 		./kernel/*.o \
 		./util/num/*.o \
 		./util/timer/*.o \

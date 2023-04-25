@@ -8,13 +8,19 @@ NVCC_FLAGS += -O3 -use_fast_math
 
 INCLUDE := $(CUDA_DIR)/include
 
-all: naive float
+all: particlefilter_naive particlefilter_float
 
-naive: ex_particle_CUDA_naive_seq.cu
-	$(CC) ${NVCC_FLAGS} -I$(INCLUDE) -L$(CUDA_LIB_DIR) -lcuda -g -lm  ex_particle_CUDA_naive_seq.cu -o particlefilter_naive
-	
-float: ex_particle_CUDA_float_seq.cu
-	$(CC) ${NVCC_FLAGS} -I$(INCLUDE) -L$(CUDA_LIB_DIR) -lcuda -g -lm  ex_particle_CUDA_float_seq.cu -o particlefilter_float
+particlefilter_naive: particlefilter_naive.o
+	$(CC) ${NVCC_FLAGS} -L$(CUDA_LIB_DIR) -lcuda -lm  $< -o $@
+
+particlefilter_naive.o: ex_particle_CUDA_naive_seq.cu
+	$(CC) ${NVCC_FLAGS} -I$(INCLUDE)  $< -o $@ -c
+
+particlefilter_float: particlefilter_float.o
+	$(CC) ${NVCC_FLAGS} -L$(CUDA_LIB_DIR) -lcuda -lm  $< -o $@
+
+particlefilter_float.o: ex_particle_CUDA_float_seq.cu
+	$(CC) ${NVCC_FLAGS} -I$(INCLUDE)  $< -o $@ -c
 
 clean:
-	rm particlefilter_naive particlefilter_float
+	rm -f particlefilter_naive particlefilter_float *.o
