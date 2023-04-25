@@ -30,8 +30,8 @@ main.o: 	main.cu \
 				srad_kernel.cu \
 				srad2_kernel.cu \
 				compress_kernel.cu
-	nvcc	main.cu \
-				-c -O3 -arch sm_35
+	${CC}	main.cu \
+				-c -O3 ${NVCC_FLAGS}
 
 # delete all object files
 clean:

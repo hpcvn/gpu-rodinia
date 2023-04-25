@@ -1,14 +1,14 @@
+include ../../../common/make.config
 CC = gcc
-NVCC = nvcc
+NVCC = ${CUDA_DIR}/bin/nvcc
 
 DEFS += \
 		-DGPU_TIMER \
 		$(SPACE)
 
-NVCCFLAGS += -I../common \
+NVCC_FLAGS += -I../common \
 			 -O3 \
 			 -use_fast_math \
-			 -arch=sm_20 \
 			 -lm \
 			 $(SPACE)
 
@@ -31,10 +31,10 @@ OBJS = ../common/common.o lud.o lud_kernel.o
 all : $(EXECUTABLE)
 
 .c.o : 
-	$(NVCC) $(KERNEL_DIM) $(NVCCFLAGS) $(DEFS) -o $@ -c $<
+	$(NVCC) $(KERNEL_DIM) $(NVCC_FLAGS) $(DEFS) -o $@ -c $<
 
 %.o:	%.cu 
-	$(NVCC) $(KERNEL_DIM) $(NVCCFLAGS) $(DEFS) -o $@ -c $<
+	$(NVCC) $(KERNEL_DIM) $(NVCC_FLAGS) $(DEFS) -o $@ -c $<
 
 clang: $(SRC)
 	clang++ lud.cu lud_kernel.cu ../common/common.c -o $(EXECUTABLE) \
@@ -42,7 +42,7 @@ clang: $(SRC)
 		-L/usr/local/cuda/lib64 -lcudart_static -ldl -lrt -pthread -DTIMING
 
 $(EXECUTABLE) : $(OBJS)
-	$(NVCC) $(NVCCFLAGS) -o $@  $?
+	$(NVCC) $(NVCC_FLAGS) -o $@  $?
 
 clean:
 	rm -f $(EXECUTABLE) $(OBJS) *.linkinfo

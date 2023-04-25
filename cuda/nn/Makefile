@@ -10,7 +10,7 @@ clean :
 
 nn : nn_cuda.cu
 	$(CC) -cuda nn_cuda.cu
-	$(CC) -o nn nn_cuda.cu
+	$(CC) -o nn nn_cuda.cu ${NVCC_FLAGS}
 
 clang: $(SRC)
 	clang++ nn_cuda.cu -o nn -I../util --cuda-gpu-arch=sm_20 \
