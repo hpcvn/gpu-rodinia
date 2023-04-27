@@ -1,0 +1,31 @@
+include ../../common/hip.make.config
+
+HIP_SDK_PATH := $(SDK_DIR)
+
+# Determine the correct version of the cutil library
+CUTIL_LIB = # -lcutil
+ifeq ($(shell uname -m), x86_64)
+     ifeq ($(shell if test -e $(SDK_DIR)/lib/libcutil_x86_64.a; then echo T; else echo F; fi), T)
+        CUTIL_LIB = #-lcutil_x86_64
+     endif
+endif
+
+HIPCC_FLAGS += -I./inc -D__DRIVER_TYPES_H__
+
+all: euler3d euler3d_double  pre_euler3d  pre_euler3d_double
+
+euler3d: euler3d.cu
+	${HIPCC} ${HIPCC_FLAGS} $(KERNEL_DIM) euler3d.cu -o euler3d  -L$(HIP_SDK_PATH)/lib $(CUTIL_LIB)
+
+euler3d_double: euler3d_double.cu
+	${HIPCC} ${HIPCC_FLAGS} euler3d_double.cu -o euler3d_double  -L$(HIP_SDK_PATH)/lib $(CUTIL_LIB)
+
+
+pre_euler3d: pre_euler3d.cu
+	${HIPCC} ${HIPCC_FLAGS} pre_euler3d.cu -o pre_euler3d  -L$(HIP_SDK_PATH)/lib $(CUTIL_LIB)
+
+pre_euler3d_double: pre_euler3d_double.cu
+	${HIPCC} ${HIPCC_FLAGS} pre_euler3d_double.cu -o pre_euler3d_double  -L$(HIP_SDK_PATH)/lib $(CUTIL_LIB)
+
+clean:
+	rm -f euler3d euler3d_double pre_euler3d pre_euler3d_double *.linkinfo
