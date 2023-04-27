@@ -72,11 +72,11 @@ endif
 #    COMMONFLAGS += -DGPU_DWT_TESTING
 #endif
 
-#ifdef OUTPUT
-#	override OUTPUT = -DOUTPUT
-#endif
+ifdef OUTPUT
+	override OUTPUT = -DOUTPUT
+endif
 
-OUTPUT = -DOUTPUT
+#OUTPUT = -DOUTPUT
 
 # Compilers
 CXX := g++

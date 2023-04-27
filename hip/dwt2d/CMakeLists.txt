@@ -20,8 +20,6 @@ add_executable(dwt2d
   dwt_cuda/rdwt53.cu
 )
 
-target_compile_definitions(dwt2d PRIVATE OUTPUT)
-
 install(TARGETS dwt2d
         RUNTIME DESTINATION bin/hip
 	)
