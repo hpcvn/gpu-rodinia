@@ -37,3 +37,27 @@ HIP:
 clean:
 	rm $(HIP_BIN_DIR)/* -f
 	for dir in $(HIP_DIRS) ; do cd $${dir} ; make clean ; cd ../ ; done
+
+run:
+	cd backprop;		sh ./run
+	cd bfs;			sh ./run
+	cd b+tree;		sh ./run
+	cd cfd;			sh ./run
+	cd dwt2d;		sh ./run
+	cd gaussian;		sh ./run
+	cd heartwall;		sh ./run
+	cd hotspot;		sh ./run
+	cd hotspot3D;		sh ./run
+	cd huffman;		sh ./run
+	cd kmeans;		sh ./run
+	cd lavaMD;		sh ./run
+	cd lud;			sh ./run
+	cd mummergpu;		sh ./run
+	cd myocyte;		sh ./run
+	cd nn;			sh ./run
+	cd nw;			sh ./run
+	cd particlefilter;	sh ./run
+	cd pathfinder;		sh ./run
+	cd srad/srad_v1;	sh ./run
+	cd srad/srad_v2;	sh ./run
+	cd streamcluster;	sh ./run
