@@ -54,27 +54,31 @@ OMP:
 	cd openmp/pathfinder;				make;	cp pathfinder $(OMP_BIN_DIR)
 	cd openmp/mummergpu;				make;	cp bin/mummergpu $(OMP_BIN_DIR)
 
+opencl: OPENCL
 OPENCL:
-	cd opencl/backprop;			make;	cp backprop     $(OPENCL_BIN_DIR)
-	cd opencl/bfs;				make;	cp bfs		$(OPENCL_BIN_DIR)
-	cd opencl/b+tree;			make;	cp b+tree	$(OPENCL_BIN_DIR)
-	cd opencl/cfd;				make;	cp euler3d	$(OPENCL_BIN_DIR)
-	cd opencl/hotspot;			make;	cp hotspot	$(OPENCL_BIN_DIR)
-	cd opencl/kmeans;			make;	cp kmeans	$(OPENCL_BIN_DIR)
-	cd opencl/lavaMD;			make;	cp lavaMD	$(OPENCL_BIN_DIR)
-	cd opencl/leukocyte;			make;	cp OpenCL/leukocyte	$(OPENCL_BIN_DIR)
-	cd opencl/lud/ocl;			make;	cp lud		$(OPENCL_BIN_DIR)
-	cd opencl/myocyte;			make;	cp myocyte	$(OPENCL_BIN_DIR)
+	cd opencl/backprop;			make;	cp backprop.out     $(OPENCL_BIN_DIR)/backprop
+	cd opencl/bfs;				make;	cp bfs.out		$(OPENCL_BIN_DIR)/bfs
+	cd opencl/b+tree;			make;	cp b+tree.out	$(OPENCL_BIN_DIR)/b+tree
+	#cd opencl/cfd;				make;	cp euler3d	$(OPENCL_BIN_DIR)
+	cd opencl/hotspot;			make;	cp hotspot.out	$(OPENCL_BIN_DIR)/hotspot
+	cd opencl/kmeans;			make;	cp kmeans.out	$(OPENCL_BIN_DIR)/kmeans
+	cd opencl/lavaMD;			make;	cp lavaMD.out	$(OPENCL_BIN_DIR)/lavaMD
+	#cd opencl/leukocyte;			make;	cp OpenCL/leukocyte	$(OPENCL_BIN_DIR)
+	cd opencl/lud/ocl;			make;	cp lud.out		$(OPENCL_BIN_DIR)/lud
+	cd opencl/myocyte;			make;	cp myocyte.out	$(OPENCL_BIN_DIR)/myocyte
 	cd opencl/nw;				make;	cp nw		$(OPENCL_BIN_DIR)
-	cd opencl/srad;				make;	cp srad		$(OPENCL_BIN_DIR)
-	cd opencl/streamcluster;		make;	cp streamcluster	$(OPENCL_BIN_DIR)
-	cd opencl/pathfinder;			make;	cp pathfinder	$(OPENCL_BIN_DIR)
-	cd opencl/particlefilter;		make;	cp OCL_particlefilter_naive OCL_particlefilter_single OCL_particlefilter_double $(OPENCL_BIN_DIR)
-	cd opencl/gaussian;			make;	cp gaussian	$(OPENCL_BIN_DIR)
-	cd opencl/nn;				make;	cp nn	$(OPENCL_BIN_DIR)
-	cd opencl/heartwall;		        make;	cp heartwall	$(OPENCL_BIN_DIR)
-	cd opencl/hybridsort;              	make;   cp hybridsort $(CUDA_BIN_DIR)
-	cd opencl/dwt2d;                   	make;   cp dwt2d  $(CUDA_BIN_DIR)
+	cd opencl/srad;				make;	cp srad.out		$(OPENCL_BIN_DIR)/srad	
+	cd opencl/streamcluster;		make;	cp streamcluster.out	$(OPENCL_BIN_DIR)/streamcluster
+	#cd opencl/pathfinder;			make;	cp pathfinder	$(OPENCL_BIN_DIR)
+	cd opencl/particlefilter;		make;	cp OCL_particlefilter_naive.out OCL_particlefilter_single.out OCL_particlefilter_double.out $(OPENCL_BIN_DIR)
+							mv $(OPENCL_BIN_DIR)/OCL_particlefilter_naive.out $(OPENCL_BIN_DIR)/OCL_particlefilter_naive
+							mv $(OPENCL_BIN_DIR)/OCL_particlefilter_single.out $(OPENCL_BIN_DIR)/OCL_particlefilter_single
+							mv $(OPENCL_BIN_DIR)/OCL_particlefilter_double.out $(OPENCL_BIN_DIR)/OCL_particlefilter_double
+	cd opencl/gaussian;			make;	cp gaussian.out	$(OPENCL_BIN_DIR)/gaussian
+	cd opencl/nn;				make;	cp nn.out	$(OPENCL_BIN_DIR)/nn
+	cd opencl/heartwall;		        make;	cp heartwall.out	$(OPENCL_BIN_DIR)/heartwall
+	#cd opencl/hybridsort;              	make;   cp hybridsort $(CUDA_BIN_DIR)
+	cd opencl/dwt2d;                   	make;   cp dwt2d.out  $(CUDA_BIN_DIR)/dwt2d
 	
 clean: CUDA_clean OMP_clean OCL_clean
 
