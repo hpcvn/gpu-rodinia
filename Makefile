@@ -59,7 +59,7 @@ OPENCL:
 	cd opencl/backprop;			make;	cp backprop.out     $(OPENCL_BIN_DIR)/backprop
 	cd opencl/bfs;				make;	cp bfs.out		$(OPENCL_BIN_DIR)/bfs
 	cd opencl/b+tree;			make;	cp b+tree.out	$(OPENCL_BIN_DIR)/b+tree
-	#cd opencl/cfd;				make;	cp euler3d	$(OPENCL_BIN_DIR)
+	cd opencl/cfd;				make;	cp euler3d.out	$(OPENCL_BIN_DIR)
 	cd opencl/hotspot;			make;	cp hotspot.out	$(OPENCL_BIN_DIR)/hotspot
 	cd opencl/kmeans;			make;	cp kmeans.out	$(OPENCL_BIN_DIR)/kmeans
 	cd opencl/lavaMD;			make;	cp lavaMD.out	$(OPENCL_BIN_DIR)/lavaMD
@@ -69,7 +69,7 @@ OPENCL:
 	cd opencl/nw;				make;	cp nw		$(OPENCL_BIN_DIR)
 	cd opencl/srad;				make;	cp srad.out		$(OPENCL_BIN_DIR)/srad	
 	cd opencl/streamcluster;		make;	cp streamcluster.out	$(OPENCL_BIN_DIR)/streamcluster
-	#cd opencl/pathfinder;			make;	cp pathfinder	$(OPENCL_BIN_DIR)
+	cd opencl/pathfinder;			make;	cp pathfinder.out	$(OPENCL_BIN_DIR)
 	cd opencl/particlefilter;		make;	cp OCL_particlefilter_naive.out OCL_particlefilter_single.out OCL_particlefilter_double.out $(OPENCL_BIN_DIR)
 							mv $(OPENCL_BIN_DIR)/OCL_particlefilter_naive.out $(OPENCL_BIN_DIR)/OCL_particlefilter_naive
 							mv $(OPENCL_BIN_DIR)/OCL_particlefilter_single.out $(OPENCL_BIN_DIR)/OCL_particlefilter_single
@@ -77,8 +77,8 @@ OPENCL:
 	cd opencl/gaussian;			make;	cp gaussian.out	$(OPENCL_BIN_DIR)/gaussian
 	cd opencl/nn;				make;	cp nn.out	$(OPENCL_BIN_DIR)/nn
 	cd opencl/heartwall;		        make;	cp heartwall.out	$(OPENCL_BIN_DIR)/heartwall
-	#cd opencl/hybridsort;              	make;   cp hybridsort $(CUDA_BIN_DIR)
-	cd opencl/dwt2d;                   	make;   cp dwt2d.out  $(CUDA_BIN_DIR)/dwt2d
+	cd opencl/hybridsort;              	make;   cp hybridsort.out $(OPENCL_BIN_DIR)
+	cd opencl/dwt2d;                   	make;   cp dwt2d.out  $(OPENCL_BIN_DIR)/dwt2d
 	
 clean: CUDA_clean OMP_clean OCL_clean
 
