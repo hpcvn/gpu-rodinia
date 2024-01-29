@@ -1,4 +1,4 @@
 #!/bin/bash
 
-export DATA_DIR=/home/hyu/Projects/gpu-rodinia/data
+export DATA_DIR=/home/hoangdnd/gpu-code-dataset/gpu-rodinia/data
 ./b+tree.out file ${DATA_DIR}/b+tree/mil.txt command ${DATA_DIR}/b+tree/command.txt $@

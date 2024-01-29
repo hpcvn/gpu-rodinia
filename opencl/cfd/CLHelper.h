@@ -167,7 +167,8 @@ void _clSetDevice(int idx) throw(string){
 
    oclHandles.cl_status = clGetDeviceIDs(targetPlatform, CL_DEVICE_TYPE_ALL, 0, NULL, &deviceListSize);
    if(oclHandles.cl_status!=CL_SUCCESS){
-   	throw(string("exception in _clInit -> clGetDeviceIDs"));   	
+	
+   	throw(string("exception in _clInit -> clGetDeviceIDs ") + std::to_string(oclHandles.cl_status));   	
    }
    if (deviceListSize == 0)
         throw(string("InitCL()::Error: No devices found."));
@@ -259,7 +260,7 @@ string FileToString(const string fileName){
 	@return:
 	@date:		24/03/2011
 ------------------------------------------------------------*/
-char device_type[3];
+char device_type[4];
 int device_id = 0;
 int platform_id = 0;
 void _clCmdParams(int argc, char* argv[]){

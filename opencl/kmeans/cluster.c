@@ -99,6 +99,7 @@ int cluster(int      npoints,				/* number of data points */
     float **tmp_cluster_centres;			/* hold coordinates of cluster centers */
 	int		i;
 
+
 	/* allocate memory for membership */
     membership = (int*) malloc(npoints * sizeof(int));
 
@@ -108,12 +109,16 @@ int cluster(int      npoints,				/* number of data points */
 		if (nclusters > npoints) break;	/* cannot have more clusters than points */
 
 		/* allocate device memory, invert data array (@ kmeans_cuda.cu) */
+		
+	printf("Cluster: %d\n", nfeatures);
 		allocate(npoints, nfeatures, nclusters, features);
+		printf("Cluster: %d\n", nfeatures);
 
 		/* iterate nloops times for each number of clusters */
 		for(i = 0; i < nloops; i++)
 		{
 			/* initialize initial cluster centers, CUDA calls (@ kmeans_cuda.cu) */
+			
 			tmp_cluster_centres = kmeans_clustering(features,
 													nfeatures,
 													npoints,
@@ -146,7 +151,7 @@ int cluster(int      npoints,				/* number of data points */
 			}			
 		}
 		
-		deallocateMemory();							/* free device memory (@ kmeans_cuda.cu) */
+		// deallocateMemory();							/* free device memory (@ kmeans_cuda.cu) */
 	}
 
     free(membership);

@@ -217,6 +217,7 @@ int main(int argc, char** argv)
 #endif
 
 	int src = 1, final_ret = 0;
+	std::cout << HALO << std::endl;
 	for (int t = 0; t < rows - 1; t += pyramid_height)
 	{
 		int temp = src;

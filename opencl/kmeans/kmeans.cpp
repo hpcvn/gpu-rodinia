@@ -158,7 +158,7 @@ float *center_d;
 
 int allocate(int n_points, int n_features, int n_clusters, float **feature)
 {
-
+	printf("Allocate: %d\n", n_features);
 	int sourcesize = 1024*1024;
 	char * source = (char *)calloc(sourcesize, sizeof(char)); 
 	if(!source) { printf("ERROR: calloc(%d) failed\n", sourcesize); return -1; }
@@ -248,24 +248,25 @@ int allocate(int n_points, int n_features, int n_clusters, float **feature)
     clReleaseEvent(event);
 
 	membership_OCL = (int*) malloc(n_points * sizeof(int));
+	return 1;
 }
 
-void deallocateMemory()
-{
-#ifdef  TIMING
-	gettimeofday(&tv_close_start, NULL);
-#endif
-	clReleaseMemObject(d_feature);
-	clReleaseMemObject(d_feature_swap);
-	clReleaseMemObject(d_cluster);
-	clReleaseMemObject(d_membership);
-	free(membership_OCL);
-#ifdef  TIMING
-	gettimeofday(&tv_close_end, NULL);
-	tvsub(&tv_close_end, &tv_close_start, &tv);
-	close_time += tv.tv_sec * 1000.0 + (float) tv.tv_usec / 1000.0;
-#endif
-}
+// void deallocateMemory()
+// {
+// #ifdef  TIMING
+// 	gettimeofday(&tv_close_start, NULL);
+// #endif
+// 	clReleaseMemObject(d_feature);
+// 	clReleaseMemObject(d_feature_swap);
+// 	clReleaseMemObject(d_cluster);
+// 	clReleaseMemObject(d_membership);
+// 	free(membership_OCL);
+// #ifdef  TIMING
+// 	gettimeofday(&tv_close_end, NULL);
+// 	tvsub(&tv_close_end, &tv_close_start, &tv);
+// 	close_time += tv.tv_sec * 1000.0 + (float) tv.tv_usec / 1000.0;
+// #endif
+// }
 
 
 int main( int argc, char** argv) 
@@ -302,7 +303,7 @@ int	kmeansOCL(float **feature,    /* in: [npoints][nfeatures] */
 		   int     *new_centers_len,
            float  **new_centers)	
 {
-  
+	printf("OCL: %d\n", n_features);
 	int delta = 0;
 	int i, j, k;
 	cl_int err = 0;

@@ -1,6 +1,7 @@
 // includes, system
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
 #include <string.h>
 #include <math.h>
 #include <sys/time.h>
@@ -181,14 +182,15 @@ int bpnn_train_kernel(BPNN *net, float *eo, float *eh)
     float *input_weights_prev_one_dim;
 	float * partial_sum;
 	float sum;
-	float num_blocks = in / BLOCK_SIZE;
+	int num_blocks = in / BLOCK_SIZE;
+	std::cout << in << "!!!!!!" << std::endl;
 
 	input_weights_one_dim = (float *) malloc((in + 1)* (hid + 1) * sizeof(float));
 	input_weights_prev_one_dim = (float *) malloc((in + 1)* (hid + 1) * sizeof(float));
 	partial_sum = (float *) malloc(num_blocks * WIDTH * sizeof(float));
 
 	// set global and local workitems
-	size_t global_work[3] = { BLOCK_SIZE, BLOCK_SIZE * num_blocks, 1 };
+	size_t global_work[3] = { BLOCK_SIZE, BLOCK_SIZE * (unsigned int)num_blocks, 1 };
 	size_t local_work[3] = { BLOCK_SIZE, BLOCK_SIZE, 1 };
 
 	// this preprocessing stage is temporarily added to correct the bug of wrong memcopy using two-dimensional net->inputweights
@@ -317,7 +319,7 @@ int bpnn_train_kernel(BPNN *net, float *eo, float *eh)
     clReleaseEvent(event);
 
 	err = clEnqueueReadBuffer(cmd_queue, input_ocl, 1, 0, (in + 1) * sizeof(float), net->input_units, 0, 0, &event);
-	if(err != CL_SUCCESS) { printf("ERROR: 1  clEnqueueReadBuffer: input_ocl\n"); return -1; }
+	if(err != CL_SUCCESS) { printf("ERROR: 1  clEnqueueReadBuffer: input_ocl %d\n", err); return -1; }
 #ifdef TIMING
     d2h_time += probe_event_time(event,cmd_queue);
 #endif

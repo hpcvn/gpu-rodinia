@@ -80,6 +80,7 @@ float** kmeans_clustering(float **feature,    /* in: [npoints][nfeatures] */
                           float   threshold,
                           int    *membership) /* out: [npoints] */
 {    
+	printf("kmeans_clustering: %d\n", nfeatures);
     int      i, j, n = 0;				/* counters */
 	int		 loop=0, temp;
     int     *new_centers_len;	/* [nclusters]: no. of points in each cluster */
