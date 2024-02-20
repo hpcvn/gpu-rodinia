@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 #include "kmeans.h"
+#include <vector>
+
 
 #ifdef WIN
 	#include <windows.h>
@@ -301,9 +303,8 @@ int	kmeansOCL(float **feature,    /* in: [npoints][nfeatures] */
            int    *membership,
 		   float **clusters,
 		   int     *new_centers_len,
-           float  **new_centers)	
+           float  **new_centers, float* time)	
 {
-	printf("OCL: %d\n", n_features);
 	int delta = 0;
 	int i, j, k;
 	cl_int err = 0;
@@ -324,7 +325,6 @@ int	kmeansOCL(float **feature,    /* in: [npoints][nfeatures] */
     clReleaseEvent(event);
 
 	int size = 0; int offset = 0;
-					
 	clSetKernelArg(kernel_s, 0, sizeof(void *), (void*) &d_feature_swap);
 	clSetKernelArg(kernel_s, 1, sizeof(void *), (void*) &d_cluster);
 	clSetKernelArg(kernel_s, 2, sizeof(void *), (void*) &d_membership);
@@ -338,6 +338,9 @@ int	kmeansOCL(float **feature,    /* in: [npoints][nfeatures] */
 	if(err != CL_SUCCESS) { printf("ERROR: clEnqueueNDRangeKernel()=>%d failed\n", err); return -1; }
 #ifdef TIMING
     h2d_time += probe_event_time(event,cmd_queue);
+	*time = probe_event_time(event, cmd_queue) * 1e6;
+
+	
 #endif
     clReleaseEvent(event);
 

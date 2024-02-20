@@ -1,4 +1,26 @@
 #!/bin/bash
 
 export DATA_DIR=../../data
-./kmeans.out -o -i ${DATA_DIR}/kmeans/100 $@
+for i in {2048..204800..2048}; do
+    echo ------------------------------------------------
+    echo $i
+    ./kmeans.out -o -i "${DATA_DIR}/kmeans/inpuGen/${i}_34.txt"
+    # echo ------------------------------------------------
+#     echo 204800
+#     ./kmeans.out -o -i ${DATA_DIR}/kmeans/204800.txt
+#     echo ------------------------------------------------
+#     echo 819200
+#     ./kmeans.out -o -i ${DATA_DIR}/kmeans/819200.txt
+#     echo ------------------------------------------------
+#     echo 10066432
+#     ./kmeans.out -o -i ${DATA_DIR}/kmeans/inpuGen/10066432_34.txt
+#     echo ------------------------------------------------
+#     echo 20132864
+#     ./kmeans.out -o -i ${DATA_DIR}/kmeans/inpuGen/20132864_34.txt
+#     echo ------------------------------------------------
+#     echo 30199040
+#     ./kmeans.out -o -i ${DATA_DIR}/kmeans/inpuGen/30199040_34.txt
+#     echo ------------------------------------------------
+#     echo 33554432
+#     ./kmeans.out -o -i ${DATA_DIR}/kmeans/inpuGen/33554432_34.txt $@
+done

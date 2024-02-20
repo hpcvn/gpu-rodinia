@@ -1,4 +1,4 @@
 #!/bin/bash
 
-export DATA_DIR=/home/hyu/Projects/gpu-rodinia/data
-./hotspot.out 1024 4 10000 ${DATA_DIR}/hotspot/temp_1024 ${DATA_DIR}/hotspot/power_1024 output.txt $@
+export DATA_DIR=../../data
+./hotspot.out 512 4 10000 ${DATA_DIR}/hotspot/temp_512 ${DATA_DIR}/hotspot/power_512 output.txt $@

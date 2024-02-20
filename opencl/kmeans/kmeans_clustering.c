@@ -142,6 +142,8 @@ float** kmeans_clustering(float **feature,    /* in: [npoints][nfeatures] */
     for (i=1; i<nclusters; i++)
         new_centers[i] = new_centers[i-1] + nfeatures;
 
+	float time, sum = 0;
+
 	/* iterate until convergence */
 	do {
         delta = 0.0;
@@ -153,7 +155,8 @@ float** kmeans_clustering(float **feature,    /* in: [npoints][nfeatures] */
 								   membership,		/* which cluster the point belongs to */
 								   clusters,		/* out: [nclusters][nfeatures] */
 								   new_centers_len,	/* out: number of points in each cluster */
-								   new_centers		/* sum of points in each cluster */
+								   new_centers,		/* sum of points in each cluster */
+								   &time
 								   );
 
 		/* replace old cluster centers with new_centers */
@@ -165,10 +168,13 @@ float** kmeans_clustering(float **feature,    /* in: [npoints][nfeatures] */
 				new_centers[i][j] = 0.0;	/* set back to 0 */
 			}
 			new_centers_len[i] = 0;			/* set back to 0 */
-		}	 
+		}
+		if (c > 0) sum += time;
 		c++;
     } while ((delta > threshold) && (loop++ < 500));	/* makes sure loop terminates */
 	printf("iterated %d times\n", c);
+	if (c > 0) sum = sum / (c - 1);
+	printf("Average kernel time: %fns\n", sum);
     free(new_centers[0]);
     free(new_centers);
     free(new_centers_len);

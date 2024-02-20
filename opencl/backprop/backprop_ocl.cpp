@@ -363,4 +363,5 @@ int bpnn_train_kernel(BPNN *net, float *eo, float *eh)
 	printf("Close: %f\n", close_time);
 	printf("Total: %f\n", total_time);
 #endif
+	return 0;
 }
