@@ -14,7 +14,7 @@ INCLUDE := $(CUDA_DIR)/include
 	# command n
 
 # link objects(binaries) together
-a.out:		main.o
+srad:		main.o
 	$(CC)	main.o \
 				-I$(INCLUDE) \
 				-L$(CUDA_LIB_DIR)  \
@@ -30,9 +30,9 @@ main.o: 	main.cu \
 				srad_kernel.cu \
 				srad2_kernel.cu \
 				compress_kernel.cu
-	nvcc	main.cu \
-				-c -O3 -arch sm_35
+	${CC}	main.cu \
+				-c -O3 ${NVCC_FLAGS}
 
 # delete all object files
 clean:
-	rm *.o srad
+	rm -f *.o srad

@@ -1,0 +1,77 @@
+[wanghs@d14r2n09 tmp]$ hipconvertinplace-perl.sh  .
+  warning: ./helper_cuda.h:47: unsupported identifier "cuGetErrorName"
+  warning: ./helper_cuda.h:83: unsupported identifier "CUBLAS_STATUS_LICENSE_ERROR"
+  warning: ./helper_cuda.h:84: unsupported identifier "CUBLAS_STATUS_LICENSE_ERROR"
+  warning: ./helper_cuda.h:140: unsupported identifier "CUFFT_LICENSE_ERROR"
+  warning: ./helper_cuda.h:141: unsupported identifier "CUFFT_LICENSE_ERROR"
+  info: converted 154 CUDA->HIP refs ( error:7 init:0 version:0 device:24 context:0 module:0 memory:0 virtual_memory:0 stream_ordered_memory:0 addressing:0 stream:0 event:0 external_resource_interop:0 stream_memory:0 execution:0 graph:0 occupancy:0 texture:0 surface:0 peer:0 graphics:0 interactions:0 profiler:0 openGL:0 D3D9:0 D3D10:0 D3D11:0 VDPAU:0 EGL:0 thread:0 complex:0 library:0 device_library:0 device_function:0 include:0 include_cuda_main_header:0 type:8 literal:0 numeric_literal:115 define:0 extern_shared:0 kernel_launch:0 )
+  warning:5 LOC:935 in './helper_cuda.h'
+
+  info: TOTAL-converted 154 CUDA->HIP refs ( error:7 init:0 version:0 device:24 context:0 module:0 memory:0 virtual_memory:0 stream_ordered_memory:0 addressing:0 stream:0 event:0 external_resource_interop:0 stream_memory:0 execution:0 graph:0 occupancy:0 texture:0 surface:0 peer:0 graphics:0 interactions:0 profiler:0 openGL:0 D3D9:0 D3D10:0 D3D11:0 VDPAU:0 EGL:0 thread:0 complex:0 library:0 device_library:0 device_function:0 include:0 include_cuda_main_header:0 type:8 literal:0 numeric_literal:115 define:0 extern_shared:0 kernel_launch:0 )
+  warning:5 LOC:2068
+  kernels (0 total) : 
+
+  hipDeviceGetAttribute 16
+  hipDeviceAttributeComputeCapabilityMajor 5
+  hipDeviceAttributeComputeCapabilityMinor 5
+  hipError_t 4
+  hipSetDevice 4
+  hipGetLastError 4
+  hipGetDeviceCount 3
+  hipComputeModeProhibited 3
+  hipDeviceAttributeComputeMode 3
+  HIPRAND_STATUS_DOUBLE_PRECISION_REQUIRED 2
+  HIPRAND_STATUS_TYPE_ERROR 2
+  HIPBLAS_STATUS_EXECUTION_FAILED 2
+  HIPSPARSE_STATUS_NOT_INITIALIZED 2
+  HIPFFT_EXEC_FAILED 2
+  HIPFFT_INTERNAL_ERROR 2
+  HIPFFT_NO_WORKSPACE 2
+  HIPFFT_UNALIGNED_DATA 2
+  HIPRAND_STATUS_OUT_OF_RANGE 2
+  HIPFFT_INVALID_PLAN 2
+  HIPSPARSE_STATUS_MAPPING_ERROR 2
+  HIPRAND_STATUS_INTERNAL_ERROR 2
+  HIPRAND_STATUS_LAUNCH_FAILURE 2
+  HIPRAND_STATUS_LENGTH_NOT_MULTIPLE 2
+  HIPSPARSE_STATUS_ARCH_MISMATCH 2
+  HIPBLAS_STATUS_INVALID_VALUE 2
+  HIPFFT_INVALID_TYPE 2
+  HIPRAND_STATUS_SUCCESS 2
+  HIPBLAS_STATUS_SUCCESS 2
+  HIPRAND_STATUS_INITIALIZATION_FAILED 2
+  hipSuccess 2
+  HIPFFT_INVALID_SIZE 2
+  hipGetErrorString 2
+  HIPBLAS_STATUS_NOT_SUPPORTED 2
+  HIPFFT_INCOMPLETE_PARAMETER_LIST 2
+  HIPFFT_PARSE_ERROR 2
+  HIPFFT_SETUP_FAILED 2
+  HIPSPARSE_STATUS_INTERNAL_ERROR 2
+  HIPBLAS_STATUS_INTERNAL_ERROR 2
+  HIPRAND_STATUS_NOT_INITIALIZED 2
+  HIPBLAS_STATUS_ARCH_MISMATCH 2
+  HIPBLAS_STATUS_MAPPING_ERROR 2
+  HIPRAND_STATUS_PREEXISTING_FAILURE 2
+  HIPBLAS_STATUS_ALLOC_FAILED 2
+  HIPFFT_INVALID_VALUE 2
+  HIPSPARSE_STATUS_ALLOC_FAILED 2
+  HIPSPARSE_STATUS_MATRIX_TYPE_NOT_SUPPORTED 2
+  HIPRAND_STATUS_VERSION_MISMATCH 2
+  HIPFFT_ALLOC_FAILED 2
+  HIPSPARSE_STATUS_INVALID_VALUE 2
+  HIPSPARSE_STATUS_EXECUTION_FAILED 2
+  HIPFFT_INVALID_DEVICE 2
+  HIPBLAS_STATUS_NOT_INITIALIZED 2
+  HIPFFT_NOT_SUPPORTED 2
+  HIPSPARSE_STATUS_SUCCESS 2
+  HIPRAND_STATUS_ARCH_MISMATCH 2
+  HIPFFT_NOT_IMPLEMENTED 2
+  HIPRAND_STATUS_ALLOCATION_FAILED 2
+  HIPFFT_SUCCESS 2
+  hipGetDevice 1
+  hipDeviceAttributeClockRate 1
+  hipDeviceAttributeMultiprocessorCount 1
+  hipDeviceAttributeIntegrated 1
+  hipGetErrorName 1
+
